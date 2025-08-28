@@ -7,8 +7,6 @@ async function getJobsService(filters) {
     const where = {};
     if (title) where.title = { [Op.like]: `%${title}%` };
     if (company) where.company = { [Op.like]: `%${company}%` };
-    if (location) where.location = { [Op.like]: `%${location}%` };
-    if (role_type) where.role_type = { [Op.like]: `%${role_type}%` };
     if (category) where.category = { [Op.like]: `%${category}%` };
   
     const pageNum = parseInt(page) || 1;
@@ -20,8 +18,7 @@ async function getJobsService(filters) {
     if (sort) {
       if (sort === "title") order = [["title", "ASC"]];
       else if (sort === "company") order = [["company", "ASC"]];
-      else if (sort === "location") order = [["location", "ASC"]];
-      // you can extend here with more options
+      else if (sort === "createdAt") order = [["createdAt", "ASC"]];
     }
   
     const jobs = await Job.findAndCountAll({

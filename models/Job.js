@@ -9,7 +9,8 @@ const Job = sequelize.define("Job", {
   category: { type: DataTypes.STRING },
   url: { type: DataTypes.STRING, unique: true, allowNull: false }
 }, {
-  tableName: "jobs"
+  tableName: "jobs",
+  timestamps: true
 });
 
 module.exports = Job;
